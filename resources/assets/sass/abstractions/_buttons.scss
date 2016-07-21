@@ -1,0 +1,25 @@
+
+
+
+
+/*---------------------------------------------------------------
+	$botones
+-----------------------------------------------------------------*/
+
+.boton{
+	background:$base-color;
+	color: #fff;
+	cursor: pointer;
+
+	&:hover{
+		background:$base-color;
+		color: #fff;
+	}
+
+	&:focus{
+		background:$base-color;
+		color: #fff;
+	}
+	
+}
+

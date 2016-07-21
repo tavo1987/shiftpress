@@ -1,0 +1,162 @@
+
+
+
+/*=================================================================
+  COMMENTS
+===================================================================*/
+
+
+#comments-title{
+  color: #000;
+  border-top: 1px solid rgba(0,0,0,.3);
+  padding: .75rem 0;
+  color: $celeste;
+  font-size: 1.25rem;
+  margin-bottom: 0 !important;
+}
+
+//contenedor de loas cometanrios
+.commentlist{
+  margin-left: 0;
+  padding-left: 0 !important;
+}
+
+//items o comentarios
+.commentlist li {
+  list-style: none !important;
+  border:none;
+  padding-bottom: .5rem;
+}
+.commentlist > li {
+    margin-top: 5px;
+}
+
+//contenedor de avatar
+.vcard {
+  border: none;
+  margin-bottom: 0;
+}
+
+.comment-author {
+  margin-top: 5px;
+  font-size: .85rem;
+  //text del nombre o alias
+  .fn{
+    font-style: normal !important;
+    padding-left: 5px;
+    color: $celeste;
+  }
+
+}
+
+//avatar
+.comment-author img{
+  border-radius: 50%;
+}
+
+//respuesta
+.reply a{
+  background:$celeste;
+  color: #fff !important;
+  font-size: .75rem;
+  padding:.25rem .35rem;
+  border-radius: 5px;
+}
+
+//contenedor de fecha hora 
+.comment-meta a{
+  font-size: .75rem;
+  color: $dark-gray !important;
+
+  &:hover{
+    text-decoration: none !important;
+  }
+}
+
+//para el comentaio o parrrafo
+.comment-body > p{
+  background:rgba($celeste,.2);
+  color: #666;
+  padding:.3rem 1rem;
+  border-radius: 5px;
+  margin: .75rem 0;
+  position: relative;
+  text-align: left;
+
+  &:before{
+    content: "";
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #D0F1F0;
+    position: absolute;
+    right: 100%;
+    bottom: 100%;
+    left: 20px;
+    
+    }
+}
+
+
+.depth-1, .depth-2, .depth-3, .depth-4 {
+  border-top:1px dashed rgba(black,.3) !important;
+  border-radius: 4px;
+}
+
+//titulo del formulario para comentar
+.comment-reply-title{
+  border-top: 1px dashed rgba(black,.3);
+  color: #000 !important;
+  padding-top: 1rem !important;
+  }
+
+  //conecntado como 
+.logged-in-as a{
+  font-size: .85rem;
+}
+
+//formulario
+
+.comment-form{
+  width: 75%;
+
+  //nota
+  .comment-notes{
+    font-size: .8rem;
+    color: #999;
+  }
+  //labels
+  .comment-form-author,.comment-form-email,.comment-form-url{
+    label{
+      color: #999;
+      font-size: .8rem;
+    }
+
+    span{
+      color: red;
+    }
+
+  }
+  
+  #comment, #author, #email,#url{
+  border-radius: 3px;
+  border: 1px solid rgba(black,.15);
+  box-shadow: none;
+  }
+
+  #submit{
+    background:$celeste;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    padding: .5rem .75rem;
+    transition: all .3s ease;
+    &:hover{
+      cursor: pointer;
+      background:darken($celeste,10);
+    }
+  }
+
+}
+
+//boton enviar
+

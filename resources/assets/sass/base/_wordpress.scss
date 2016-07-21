@@ -1,0 +1,113 @@
+
+/*---------------------------------------------------
+/*  Estilos generales alineaciones para el articulo
+/*---------------------------------------------------*/
+.center {
+  text-align: center;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.alignright, .alignright {
+    float: right;
+    margin-left: 1em;
+    //margin-bottom: 1em;
+}
+
+.alignleft, a .alignleft {
+    float: left;
+    margin-right: 1em;
+    //margin-bottom: 1em;
+}
+
+.aligncenter, a .aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+hr.clear {
+  clear: both;
+  visibility: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 0px;
+}
+
+.sticky {
+  background:red;
+}
+
+
+.gallery-caption,
+.bypostauthor{
+  color: #6e6e6e;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+/* img.img {
+  padding: 1.15rem;
+}
+
+img.img-small {
+  padding: .45rem;
+}
+
+img.img-medium {
+  padding: .75rem;
+} */

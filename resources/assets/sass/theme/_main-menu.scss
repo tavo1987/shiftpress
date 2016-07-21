@@ -1,0 +1,36 @@
+
+/*==============================================================================*/
+/*	MAIN MENU
+/*==============================================================================*/
+
+.container-menu{
+
+   .menu{
+
+      @media screen  and(min-width: 64.5em){
+         display: flex;
+      }
+
+      a{
+         color: $link-color;
+      }
+
+      li{
+         display: block;
+         position: relative;
+      }
+
+      li ul{
+         //display: none;
+         background: $base-color;
+         left: 0;
+         position: absolute;
+      }
+
+      li:hover > .container-submenu > ul{
+         display: block;
+      }
+
+   }//FIN MENU
+
+}//FIN CONTAINER MENU

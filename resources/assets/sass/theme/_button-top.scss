@@ -1,0 +1,15 @@
+
+.top {
+	display:none;
+	padding: 15px 20px;
+	background:$base-color;
+	font-size:18px;
+	color:#fff;
+	cursor:pointer;
+	border-radius: 50px;
+	position: fixed;
+	bottom:10px;
+	right:10px;
+	z-index: 40;
+	outline: none;
+}
