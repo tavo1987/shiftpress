@@ -20,20 +20,20 @@ var gulp         = require('gulp'),
 
 /**
  * [Compile Sass, Autoprefix and minify sass inside scss folder on assets]
- * 
+ *
  */
 gulp.task('styles', function() {
   return gulp.src('./assets/scss/**/*.scss')
     .pipe(plumber(function(error) {
-            gutil.log(gutil.colors.red(error.message));
-            this.emit('end');
+        gutil.log(gutil.colors.red(error.message));
+        this.emit('end');
     }))
     .pipe(sass())
     .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: true
-        }))
-    .pipe(gulp.dest('./public/css'))     
+        browsers: ['last 2 versions'],
+        ascade: true
+    }))
+    .pipe(gulp.dest('./public/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('./public/css'))
@@ -46,8 +46,8 @@ gulp.task('styles', function() {
  */
 gulp.task('jquery-js', function() {
   return gulp.src([
-          // Jquery
-          './node_modules/jquery/dist/jquery.js',
+    // Jquery
+    './node_modules/jquery/dist/jquery.js',
   ])
     .pipe(plumber())
     .pipe(jshint())
@@ -84,10 +84,10 @@ gulp.task('foundation-sites-js', function() {
 
 /**
  * [JSHint, concat, and minify JavaScript site]
- * 
+ *
  */
 gulp.task('scripts', function() {
-  return gulp.src([ 
+  return gulp.src([
            // Grab your custom scripts
         './assets/js/*.js'
   ])
@@ -100,7 +100,7 @@ gulp.task('scripts', function() {
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
     .pipe(livereload())
-});    
+});
 
 /**
  * [Create the default task compiled all tasks]
@@ -108,7 +108,7 @@ gulp.task('scripts', function() {
  * @return {[type]}                          [description]
  */
 gulp.task('default', function(){
-  gulp.start('styles', 'jquery-js', 'foundation-sites-js', 'scripts');  
+  gulp.start('styles', 'jquery-js', 'foundation-sites-js', 'scripts');
 })
 
 gulp.task('watch', function() {
@@ -123,7 +123,7 @@ gulp.task('watch', function() {
 
   // Watch foundation-js files
   gulp.watch('./node_modules/foundation-sites/js/*.js', ['foundation-sites-js']);
-  
+
   // Watch site-js files
   gulp.watch('./assets/js/*.js', ['scripts']);
 

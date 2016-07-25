@@ -16,6 +16,11 @@ require_once(get_template_directory().'/core/enqueue-scripts.php');
 require_once(get_template_directory().'/core/theme-support.php');
 
 /**
+ * Theme options
+*/
+require_once(get_template_directory().'/core/shiftpress-admin.php');
+
+/**
  * Register Menus
  */
 require_once(get_template_directory().'/core/register-menus.php');
