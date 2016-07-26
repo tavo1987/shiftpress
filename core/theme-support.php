@@ -4,12 +4,20 @@
  * [Enable themes support: Title tag, automatic feed links, post thumbnails, custom backgrounds, logo]
  * @return [type] [description]
  */
-function shiftpress_setup()
-{
+function shiftpress_setup(){
     load_theme_textdomain('shiftpress', get_template_directory() . '/languages');
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('post-thumbnails');
+    add_theme_support('menus');
+    add_theme_support( 'custom-logo', array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
+    ));
+
 
     global $content_width;
     if (! isset($content_width)) {
@@ -36,8 +44,8 @@ function shiftpress_setup()
     $defaults = array(
         'default-image'          => get_template_directory_uri().'/public/images/logo.png',
         'random-default'         => false,
-        'width'                  => 196,
-        'height'                 => 78,
+        'width'                  => 1200,
+        'height'                 => 100,
         'flex-height'            => false,
         'flex-width'             => false,
         'default-text-color'     => '',
