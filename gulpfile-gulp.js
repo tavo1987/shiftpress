@@ -65,11 +65,8 @@ gulp.task('jquery-js', function() {
  */
 gulp.task('foundation-sites-js', function() {
   return gulp.src([
-          //What-input
-          './node_modules/what-input/what-input.js',
-
           // Foundation
-          './node_modules/foundation-sites/dist/foundation.js',
+          './node_modules/foundation-sites/dist/js/foundation.js',
 
   ])
     .pipe(plumber())
