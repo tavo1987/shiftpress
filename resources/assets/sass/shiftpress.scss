@@ -13,7 +13,6 @@
 @import "lib/placeholders";
 
 //BASE STYLES
-
 @import '../../node_modules/foundation-sites/dist/css/foundation-flex.css';
 @import "base/wordpress";
 @import "base/base";
@@ -28,6 +27,7 @@
 //THEME
 @import "theme/button-top";
 @import "theme/header";
+@import "theme/banner";
 @import "theme/main-menu";
 @import "theme/search";
 @import "theme/widgets";

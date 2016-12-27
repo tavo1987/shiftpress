@@ -17,25 +17,18 @@
 </head>
 <body <?php body_class(); ?>>
     <div id="wrapper" class="hfeed">
-        <header id="header" role="banner">
-            <section id="branding">
-                <div id="site-title"><?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '<h1>'; } ?>
-                    <?php if (function_exists('get_custom_logo')): ?>
-                        <?php echo get_custom_logo(); ?>
-                    <?php endif ?>
+        <header class="header" role="banner">
+            <section class="branding">
+                <div class="logo">
+                <?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '<h1>'; } ?>
+                        <?php if (function_exists('get_custom_logo')): ?>
+                            <?php echo get_custom_logo(); ?>
+                        <?php else: ?>
+                        <?php endif ?>
                     <?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1>'; } ?>
                 </div>
             </section><!--END SECTION-->
 
-            <section class="banner">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" rel="home">
-                    <img  src="<?php header_image(); ?>"
-                    height="<?php echo get_custom_header()->height; ?>"
-                    width="<?php echo get_custom_header()->width; ?>"
-                    alt="<?php bloginfo('name');?>"
-                    title="<?php bloginfo('description')?>" />
-                </a>
-            </section>
 
             <div class="top-bar">
                 <nav id="menu" role="navigation" class="top-bar-left">
@@ -48,5 +41,9 @@
                 <?php get_search_form(); ?>
             </div>
         </header><!--END HEADER-->
+
+        <section class="banner">
+            <img src="http://placehold.it/1920x500" alt="Banner">
+        </section>
 
         <div id="container">
