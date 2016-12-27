@@ -1,20 +1,12 @@
 
-header{
-   
-}
-
-
 .header{
-   max-width: $max-width;
-   margin: auto;
-
-   .logo{
-
-      h1{
+    margin: auto;
+     h1, h2{
          margin: 0;
          padding: 0;
-      }
+     }
 
-   }//FIN LOGO
-
-}//FIN HEADER
+    .branding{
+      background:$base-color;
+    }//END LOGO
+}//end HEADER
