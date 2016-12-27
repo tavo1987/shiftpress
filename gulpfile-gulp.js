@@ -16,14 +16,14 @@ var gulp         = require('gulp'),
     concat       = require('gulp-concat'),
     rename       = require('gulp-rename'),
     plumber      = require('gulp-plumber'),
-    livereload   = require('gulp-livereload');
+    browserSync = require('browser-sync').create();
 
 /**
  * [Compile Sass, Autoprefix and minify sass inside scss folder on assets]
  *
  */
 gulp.task('styles', function() {
-  return gulp.src('./assets/scss/**/*.scss')
+  return gulp.src('./resources/assets/sass/**/*.scss')
     .pipe(plumber(function(error) {
         gutil.log(gutil.colors.red(error.message));
         this.emit('end');
@@ -33,31 +33,11 @@ gulp.task('styles', function() {
         browsers: ['last 2 versions'],
         ascade: true
     }))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('./public/css/'))
     .pipe(minifycss())
-    .pipe(gulp.dest('./public/css'))
-    .pipe(livereload())
+    .pipe(browserSync.stream())
 });
 
-/**
- * [JSHint, concat, and minify Jquery]
- * @return {[type]} [description]
- */
-gulp.task('jquery-js', function() {
-  return gulp.src([
-    // Jquery
-    './node_modules/jquery/dist/jquery.js',
-  ])
-    .pipe(plumber())
-    .pipe(jshint())
-    .pipe(concat('jquery.js'))
-    .pipe(gulp.dest('./public/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('./public/js'))
-    .pipe(livereload())
-});
 
 /**
  * [JSHint, concat, and minify Foundation Sites]
@@ -65,18 +45,14 @@ gulp.task('jquery-js', function() {
  */
 gulp.task('foundation-sites-js', function() {
   return gulp.src([
-          // Foundation
-          './node_modules/foundation-sites/dist/js/foundation.js',
-
+      './node_modules/foundation-sites/dist/js/foundation.js',
   ])
     .pipe(plumber())
     .pipe(jshint())
     .pipe(concat('foundation.js'))
-    .pipe(gulp.dest('./public/js'))
-    .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('./public/js'))
-    .pipe(livereload())
+    .pipe(gulp.dest('./resources/assets/js/vendor'))
+    .pipe(browserSync.stream())
 });
 
 /**
@@ -85,18 +61,17 @@ gulp.task('foundation-sites-js', function() {
  */
 gulp.task('scripts', function() {
   return gulp.src([
-           // Grab your custom scripts
-        './assets/js/*.js'
+    // Grab your custom scripts
+    './resources/assets/js/vendor/**/.js',
+    './resources/assets/js/**/*.js',
   ])
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('./public/js'))
-    .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
-    .pipe(livereload())
+    .pipe(browserSync.stream())
 });
 
 /**
@@ -104,24 +79,32 @@ gulp.task('scripts', function() {
  * @param  {[type]} ){  gulp.start('styles', 'scripts',    'foundation-sites-js');  } [description]
  * @return {[type]}                          [description]
  */
+
 gulp.task('default', function(){
-  gulp.start('styles', 'jquery-js', 'foundation-sites-js', 'scripts');
+  gulp.start('styles', 'foundation-sites-js', 'scripts');
 })
 
 gulp.task('watch', function() {
-  //livereload watch
-  livereload.listen();
+
+  browserSync.init({
+    proxy: 'http://example.dev',
+    host: 'example.dev',
+    open: 'external',
+    files: [
+        './**/*.php',
+        './resources/assets/js/**/*.js',
+        '/public/css/**/*.css',
+        '/resources/assets/sass/**/*.scss'
+      ]
+  });
 
   // Watch .scss files
-  gulp.watch('./assets/scss/**/*.scss', ['styles']);
+  gulp.watch('./resources/assets/sass/**/*.scss', ['styles']);
 
-  // Watch jquery-js files
-  gulp.watch('./node_modules/jquery/dist/*.js', ['jquery-js']);
-
-  // Watch foundation-js files
+    // Watch foundation-js files
   gulp.watch('./node_modules/foundation-sites/js/*.js', ['foundation-sites-js']);
 
   // Watch site-js files
-  gulp.watch('./assets/js/*.js', ['scripts']);
+  gulp.watch('./resources/assets/js/**/*.js', ['scripts']);
 
 });
