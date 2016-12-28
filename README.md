@@ -1,5 +1,5 @@
 # Shift-Press
-Theme base for development in Shift
+Base theme for WordPress
 
 ## Tecnologías
 * Html5
@@ -7,9 +7,9 @@ Theme base for development in Shift
 * Php
 * Gulp
 * Elixir
+* Browser Sync
 * Sass
 * Responsive Design
-* Multipropósito
 
 ## Plugins
 Se desactivo la función de plugins necesarios por problemas de testeo pero los plugins comunmente utilizados son:
@@ -43,10 +43,11 @@ Para instalar todas las dependencias para constuir el tema basado en foundation 
 Esto nos baja foundation y las dependencias gulp que utilizamos en este tema.
 
 ## Configuración del proyecto
-El tema maneja dos maneras de administrar los assets
+El tema maneja varias maneras de administrar los assets
 
 * Elixir
 * Solo Gulp
+* Prepros (solo sass)
 
 Es totalmente flexible para trabajar con foundation o boostrap solo cambiar la importación en:
 
@@ -56,7 +57,7 @@ De momento está configurado para usar foundation, después de haber instalado l
 
 	npm run start
 
-**si se escogió la opción elixir antes de continuar debes entrar al archivo gulpfile.js generado a cambiar la url de tu sitio en desarrollo.** Una vez generado el archivo procedemos a ejecutar el siguiente comando para correr gulp ya sea con elixir o sin el:
+**Antes de continuar debes entrar al archivo gulpfile.js generado a cambiar la url de tu sitio en desarrollo.** Una vez generado el archivo procedemos a ejecutar el siguiente comando para correr gulp ya sea con elixir o sin el:
 
 	npm run dev
 
