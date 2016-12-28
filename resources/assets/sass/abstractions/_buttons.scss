@@ -6,13 +6,13 @@
 	$botones
 -----------------------------------------------------------------*/
 
-.boton{
+.button{
 	background:$base-color;
 	color: #fff;
 	cursor: pointer;
 
 	&:hover{
-		background:$base-color;
+		background:lighten($base-color,10);
 		color: #fff;
 	}
 
@@ -20,6 +20,6 @@
 		background:$base-color;
 		color: #fff;
 	}
-	
+
 }
 
