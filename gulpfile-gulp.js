@@ -7,16 +7,31 @@
 var gulp         = require('gulp'),
     gutil        = require('gulp-util'),
     sass         = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss    = require('gulp-cssnano'),
     sourcemaps   = require('gulp-sourcemaps'),
-    jshint       = require('gulp-jshint'),
-    stylish      = require('jshint-stylish'),
     uglify       = require('gulp-uglify'),
     concat       = require('gulp-concat'),
-    rename       = require('gulp-rename'),
     plumber      = require('gulp-plumber'),
-    browserSync = require('browser-sync').create();
+    browserSync  = require('browser-sync').create(),
+    postcss      = require('gulp-postcss'),
+    cssnano      = require('cssnano'),
+    assets       = require('postcss-assets'),
+    lost         = require('lost');
+
+
+var postcssPlugins = [
+    assets({
+        loadPaths: ['images'],
+        relative: 'public/css',
+        cachebuster: true
+    }),
+    lost,
+    cssnano({
+      autoprefixer: {
+        add:true,
+      }
+    }),
+];
+
 
 /**
  * [Compile Sass, Autoprefix and minify sass inside scss folder on assets]
@@ -29,12 +44,8 @@ gulp.task('styles', function() {
         this.emit('end');
     }))
     .pipe(sass())
-    .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        ascade: true
-    }))
+    .pipe(postcss(postcssPlugins))
     .pipe(gulp.dest('./public/css/'))
-    .pipe(minifycss())
     .pipe(browserSync.stream())
 });
 
@@ -48,7 +59,6 @@ gulp.task('foundation-sites-js', function() {
       './node_modules/foundation-sites/dist/js/foundation.js',
   ])
     .pipe(plumber())
-    .pipe(jshint())
     .pipe(concat('foundation.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./resources/assets/js/vendor'))
@@ -66,23 +76,12 @@ gulp.task('scripts', function() {
     './resources/assets/js/**/*.js',
   ])
     .pipe(plumber())
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
     .pipe(browserSync.stream())
 });
 
-/**
- * [Create the default task compiled all tasks]
- * @param  {[type]} ){  gulp.start('styles', 'scripts',    'foundation-sites-js');  } [description]
- * @return {[type]}                          [description]
- */
-
-gulp.task('default', function(){
-  gulp.start('styles', 'foundation-sites-js', 'scripts');
-})
 
 gulp.task('watch', function() {
 
@@ -108,3 +107,5 @@ gulp.task('watch', function() {
   gulp.watch('./resources/assets/js/**/*.js', ['scripts']);
 
 });
+
+gulp.task('default',['watch']);
