@@ -46,7 +46,7 @@ gulp.task('styles', function() {
     .pipe(sass())
     .pipe(postcss(postcssPlugins))
     .pipe(gulp.dest('./public/css/'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 });
 
 
@@ -62,7 +62,7 @@ gulp.task('foundation-sites-js', function() {
     .pipe(concat('foundation.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./resources/assets/js/vendor'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 });
 
 /**
@@ -72,14 +72,14 @@ gulp.task('foundation-sites-js', function() {
 gulp.task('scripts', function() {
   return gulp.src([
     // Grab your custom scripts
-    './resources/assets/js/vendor/**/.js',
+    './resources/assets/js/vendor/**/*.js',
     './resources/assets/js/**/*.js',
   ])
     .pipe(plumber())
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 });
 
 
@@ -101,7 +101,7 @@ gulp.task('watch', function() {
   gulp.watch('./resources/assets/sass/**/*.scss', ['styles']);
 
     // Watch foundation-js files
-  gulp.watch('./node_modules/foundation-sites/js/*.js', ['foundation-sites-js']);
+  gulp.watch('./node_modules/foundation-sites/dist/js/*.js', ['foundation-sites-js']);
 
   // Watch site-js files
   gulp.watch('./resources/assets/js/**/*.js', ['scripts']);
