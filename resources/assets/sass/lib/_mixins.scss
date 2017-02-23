@@ -1,15 +1,28 @@
+/*
+    =====================================================
+        MIXINS
+    =====================================================
+*/
 
+/*
+Example:
+.foo {
+    color: red;
+    @include media-query('mobile') {
+        color: blue;
+    }
+}*/
 
-
-
-/*------------------------------------------------------------------
-	$mixins
---------------------------------------------------------------------*/
-@mixin vendor($property:box-sizing,$value:border-box){
-	-webkit-#{$property}: $value ;
-	-moz-#{$property}:    $value ;
-	-ms-#{$property}:     $value ;
-	#{$property}:         $value ;
+@mixin media-query($breakpoint) {
+    @if map-has-key($breakpoints-sp, $breakpoint) {
+        @media (min-width: map-get($breakpoints-sp, $breakpoint)) {
+            @content;
+        }
+    }
+   @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints-sp` map.";
+    }
 }
 
 
@@ -19,13 +32,10 @@
 	font-size: ($size / $font-size) * 1rem;
 }
 
-//mixin para bordes redondeados 
-@mixin radius($valor:3px){
-	-webkit-border-radius:$valor;
-	-moz-border-radius:$valor;
-	-ms-border-radius:$valor;
-	-o-border-radius:$valor;
-	  border-radius:$valor;
+@mixin verticalAlign() {
+    position: absolute;
+    top: 50%;
+    transform:translateY(-50%);
 }
 
 

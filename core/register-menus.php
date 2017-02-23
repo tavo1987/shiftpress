@@ -4,5 +4,5 @@
  * Registered de menus in theme
  */
 register_nav_menus(array(
-    'main' => __('Menu principal', 'shiftpress'),   // Main nav in header
+    'main' => __('Main Menu', 'shiftpress'),   // Main nav in header
 ));
