@@ -7,41 +7,81 @@ function core_theme_start()
 {
     // launching operation cleanup
     add_action('init', 'shiftpress_head_cleanup');
+
     // remove pesky injected css for recent comments widget
     add_filter('wp_head', 'shiftpress_remove_wp_widget_recent_comments_style', 1);
+
     // clean up comment styles in the head
     add_action('wp_head', 'shiftpress_remove_recent_comments_style', 1);
+
     // clean up gallery output in wp
     add_filter('gallery_style', 'shiftpress_gallery_style');
+
     // cleaning up excerpt
     add_filter('excerpt_length', 'long_excerpt', 999);
     add_filter('excerpt_more', 'new_excerpt');
+
+    //Prevent login error
+    add_filter( 'login_errors', 'prevent_login_error' );
+
+    // remove WP version from css
+    add_filter('style_loader_src', 'remove_wp_ver_css_js', 9999);
+
+    // remove Wp version from scripts
+    add_filter('script_loader_src', 'remove_wp_ver_css_js', 9999);
+
 } /* end shiftpress start */
+
 //The default wordpress head is a mess. Let's clean it up by removing all the junk we don't need.
 function shiftpress_head_cleanup()
 {
+
+
+    //remove emojis
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+    //if you want to remove wp embed uncomment the line below
+    //add_action('init', 'stop_loading_wp_embed');
+
     // Remove category feeds
     remove_action('wp_head', 'feed_links_extra', 3);
+
     // Remove post and comment feeds
     remove_action('wp_head', 'feed_links', 2);
     remove_action('wp_head', 'rsd_link');
+
     // Remove Windows live writer
     remove_action('wp_head', 'wlwmanifest_link');
+
     // Remove index link
     remove_action('wp_head', 'index_rel_link');
+
     // Remove previous link
     remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+
     // Remove start link
     remove_action('wp_head', 'start_post_rel_link', 10, 0);
+
     // Remove links for adjacent posts
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
     // Remove WP version
     remove_action('wp_head', 'wp_generator');
-    // remove WP version from css
-    add_filter('style_loader_src', 'remove_wp_ver_css_js', 9999);
-    // remove Wp version from scripts
-    add_filter('script_loader_src', 'remove_wp_ver_css_js', 9999);
+
 } /* end cleanup */
+
+// prevent_login_error
+function prevent_login_error(){
+  return __('Opps!! Tus credenciales no son correctas', 'shiftpress');
+}
+
+// Remove wp-embed library
+function stop_loading_wp_embed() {
+    if (!is_admin()) {
+        wp_deregister_script('wp-embed');
+    }
+}
 
 
 /**
@@ -98,7 +138,7 @@ function long_excerpt($length)
 function new_excerpt($more)
 {
     global $post;
-    return '<a class="bt-more" href="'. get_permalink($post->ID) . '"> Ver mas...</a>';
+    return '<a class="bt-more" href="'. get_permalink($post->ID) . '">'.__('Read more...', 'shiftpress').'</a>';
 }
 
 //  Stop WordPress from using the sticky class (which conflicts with Foundation), and style WordPress sticky posts using the .wp-sticky class instead

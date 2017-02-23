@@ -4,13 +4,13 @@
 	=============================================
 */
 
-*{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+*, *:before, *:after {
+	box-sizing: inherit;
 }
+
 html{
-	font-size: 15px;
+	font-size: 16px;
+	box-sizing: border-box;
 }
 
 body{
@@ -23,37 +23,37 @@ a{
 }
 
 h1{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(30);// valor 	en pixeles
 }
 
 h2{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(26);// valor 	en pixeles
 }
 
 h3{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(22);// valor 	en pixeles
 }
 
 h4{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(18);// valor 	en pixeles
 }
 
 h5{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(16);// valor 	en pixeles
 }
 
 h6{
-	color: darken($second-color,5%);
+	color: darken($secondary-color,5%);
 	margin-bottom: 0.75rem;
 	@include fontSize(12);// valor 	en pixeles
 }
@@ -81,10 +81,14 @@ ul{
 
 /*para verificar el item seleccionado del menu*/
 li.current-menu-item,.page_item{
-	color: red !important;
+	color: $base-color !important;
 
 }
 
 .bg-basecolor{
 	background-color:$base-color;
+}
+
+.radius {
+	border-radius: $radius;
 }
