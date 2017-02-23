@@ -7,19 +7,32 @@ function core_theme_start()
 {
     // launching operation cleanup
     add_action('init', 'shiftpress_head_cleanup');
+
+    //if you want to remove wp embed uncomment the line below
+    //add_action('init', 'stop_loading_wp_embed');
+
     // remove pesky injected css for recent comments widget
     add_filter('wp_head', 'shiftpress_remove_wp_widget_recent_comments_style', 1);
+
     // clean up comment styles in the head
     add_action('wp_head', 'shiftpress_remove_recent_comments_style', 1);
+
     // clean up gallery output in wp
     add_filter('gallery_style', 'shiftpress_gallery_style');
+
     // cleaning up excerpt
     add_filter('excerpt_length', 'long_excerpt', 999);
     add_filter('excerpt_more', 'new_excerpt');
+
 } /* end shiftpress start */
+
 //The default wordpress head is a mess. Let's clean it up by removing all the junk we don't need.
 function shiftpress_head_cleanup()
 {
+    //remove emojis
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
     // Remove category feeds
     remove_action('wp_head', 'feed_links_extra', 3);
     // Remove post and comment feeds
@@ -42,6 +55,13 @@ function shiftpress_head_cleanup()
     // remove Wp version from scripts
     add_filter('script_loader_src', 'remove_wp_ver_css_js', 9999);
 } /* end cleanup */
+
+// Remove wp-embed library
+function stop_loading_wp_embed() {
+    if (!is_admin()) {
+        wp_deregister_script('wp-embed');
+    }
+}
 
 
 /**
@@ -98,7 +118,7 @@ function long_excerpt($length)
 function new_excerpt($more)
 {
     global $post;
-    return '<a class="bt-more" href="'. get_permalink($post->ID) . '"> Ver mas...</a>';
+    return '<a class="bt-more" href="'. get_permalink($post->ID) . '">'.__('Read more...', 'shiftpress').'</a>';
 }
 
 //  Stop WordPress from using the sticky class (which conflicts with Foundation), and style WordPress sticky posts using the .wp-sticky class instead
