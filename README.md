@@ -1,59 +1,78 @@
 # ShiftPress
 Tema base para Wordpress
 
-## Tecnologías
-* Html5
-* Css3
-* Foundation
-* Postcss
-* Php
-* Gulp
-* Elixir
-* Browser Sync
-* Sass
-* Responsive Design
+## Herramientas y Tecnologías utilizadas
 
-## Plugins
-Plugins comunmente utilizados son:
+* [Php](http://php.net/manual/en/intro-whatis.php)
+* [Sass](http://sass-lang.com/)
+* [Laravel mix](https://laravel.com/docs/5.4/mix)
+* [Foundation 6.4.3](http://foundation.zurb.com/sites/docs/)
+* [Web font loader](https://github.com/typekit/webfontloader)
 
-* [Contact Form 7 *](http://contactform7.com/docs/)
-* [Wordpress SEO by Yoast *](https://yoast.com/wordpress/plugins/seo/api/)
-* [sendgrid *](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
-* [Mailchimp for WordPress](https://mc4wp.com/kb/)
-* [Advanced Custom Fiels](http://www.advancedcustomfields.com/resources/)
+## Compilando assets
+Para la compilación de los assets hemos seleccionado laravel mix, el cual nos ayuda a través de su api, configurar y ejecutar rápidamente tareas comúnes que hacemos con nuestros archivos js y css. Cabe mencionar que laravel mix trabaja con webpack por debajo.
 
-## Instalación
-Para instalar todas las dependencias para constuir el tema basado en foundation ejecutar:
+Para correr laravel mix seguiremos los siguientes pasos:
 
-    npm install
+1. Editar el archivo `webpack.mix.js`y actualizar la opción `proxy : 'wordpress.dev'` dentro de la configuración de browsersync para ver los cambios en tiempo real sin recargar la página
+2. Instalar las depencias ejecuntado en la consola el comando `yarn`
+3. compilar mediante las siguientes opciones:
+    * `yarn dev` desarrollo
+    * `yarn watch` desarrollo y live preview
+    * `yarn prod` producción
 
-Esto nos baja foundation y las dependencias gulp que utilizamos en este tema.
+## Personalización JS
+Para realizar los camnbios tenemos que modificar el siguiente archivo `resoureces/assets/js/app.js` y comentar lo que no necesitemos.
 
-## Configuración del proyecto
-El tema maneja varias maneras de administrar los assets
+En cuanto a foundation, unicamente se esta cargando los esencial, si necesitas plugins adicionales como acordiones, slider, etc. se los tiene que requerir manualmente en la siguientes sección
+```js
+    /**
+     * We'll load jQuery and the Foundation framework which provides support
+     * for JavaScript based foundation features such as modals and tabs. This
+     * code may be modified to fit the specific needs of your application.
+     */
+    try {
+        window.$ = window.jQuery = require('jquery');
+        require('foundation-sites/dist/js/plugins/foundation.core.js');
+        require('foundation-sites/dist/js/plugins/foundation.util.mediaQuery.js');
+        //Example to include aditional plugin
+        require('foundation-sites/dist/js/plugins/foundation.util.keyboard.js');
+        require('foundation-sites/dist/js/plugins/foundation.accordion.js');
+    } catch (e) {}
+```
 
-* Elixir
-* Solo Gulp
-* Prepros (solo sass)
+## Personalización SASS
+Todos los archivos sass los podemos encontrar en `resources/assets/sass/`, de igual manera se puede personalizar foundation a nuestras necesidades, es decir cambiar sus configuraciones por defecto en `resources/assets/sass/foundation/_seetings.scss` e incluir plugins adicionales, ya que de igual forma que con los js se carga únicamente ciertos componentes de foundation, descomentado los `ìnlcudes` dentro de `resources/assets/sass/foundation/_modules.scss`, podemos cargar componentes adicionales. Si no se va a usar foundation podemos eliminarlo comentando o borrando la siguiente sección dentro de nuestro archivo `resources/assets/sass/shiftpress.scss`:
 
-Es totalmente flexible para trabajar con foundation o boostrap solo cambiar la importación en:
+```css
+    //Foundation
+    //@import "foundation/settings";
+    //@import "node_modules/foundation-sites/scss/foundation";
+    //@import "foundation/modules";
+```
 
-   resources/assets/sass/shiftpress.scss
+## Fuentes
+Para cargar fuentes personalizadas por favor usar el archivo `shiftpress.js` y edita la siguiente sección
 
-De momento está configurado para usar foundation, después de haber instalado las dependencias con npm install ejecutamos el siguiente comando para generar el archivo de gulp según necesidades ya sea en elixir o simplemente gulp:
+```js
+/**
+ * We'll load custom fonts with web font loader to improve page speed
+ */
 
-   npm run start
+import WebFont from 'webfontloader';
 
-**Antes de continuar debes entrar al archivo gulpfile.js generado a cambiar la url de tu sitio en desarrollo.** Una vez generado el archivo procedemos a ejecutar el siguiente comando para correr gulp ya sea con elixir o sin el:
+WebFont.load({
+    google: {
+        families: ['Open Sans:300,400,700']
+    }
+});
 
-   npm run dev
+```
+De esta menera mejoramos el tiempo de carga, mas información en [web font loader](https://github.com/typekit/webfontloader)
 
-para el desarrollo o:
+    nota: Recordar actualizar la fuente en el archivo de configuración sass `resources/assets/sass/lib/_settings.scss`
 
-   npm run production
 
-para producción
-
-####- - COPYRIGHT & LICENSE - -
+## COPYRIGHT & LICENSE
 
 This theme is based on BlankSlate theme
