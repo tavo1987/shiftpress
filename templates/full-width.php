@@ -1,10 +1,6 @@
 <?php
 /**
  * Template Name: Full Width
- *
- * @package Shift
- * @subpackage shift-press
- * @since shift press 1.0
  */
 ?>
 <?php get_header(); ?>
