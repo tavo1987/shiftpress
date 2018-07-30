@@ -1,13 +1,10 @@
 <?php
 
-function shiftpress_analytics_options()
+function shiftpress_tag_manager_option()
 {
-    echo '<p>'.__('Add codes for convertions:', 'shiftpress').'</p>';
-}
-function show_field_analitycs(){
-    echo '<input type="text" name="universal_analytics" id="universal_analytics" class="input" value="'.get_option('universal_analytics').'" />';
+    echo '<p>'.__('Google Tag Manager configuration:', 'shiftpress').'</p>';
 }
 
-function show_field_facebook_pixel_code(){
-    echo '<input type="text" name="facebook_pixel_code" id="facebook_pixel_code" class="input" value="'.get_option('facebook_pixel_code').'" />';
+function show_field_google_tag_manager(){
+    echo '<input type="text" placeholder="GTM-XXXXXXX" name="google_tag_manager_id" id="google_tag_manager_id" class="input" value="'.get_option('google_tag_manager_id').'" />';
 }
