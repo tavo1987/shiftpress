@@ -6,6 +6,7 @@ Tema base para Wordpress
 * [Php](http://php.net/manual/en/intro-whatis.php)
 * [Sass](http://sass-lang.com/)
 * [Laravel mix](https://laravel.com/docs/5.4/mix)
+* [Tailwincss](https://tailwindcss.com/)
 * [Foundation 6.4.3](http://foundation.zurb.com/sites/docs/)
 * [Web font loader](https://github.com/typekit/webfontloader)
 
@@ -27,18 +28,23 @@ Para realizar los camnbios tenemos que modificar el siguiente archivo `resourece
 En cuanto a foundation, unicamente se esta cargando los esencial, si necesitas plugins adicionales como acordiones, slider, etc. se los tiene que requerir manualmente en la siguientes sección
 ```js
     /**
-     * We'll load jQuery and the Foundation framework which provides support
-     * for JavaScript based foundation features such as modals and tabs. This
-     * code may be modified to fit the specific needs of your application.
+     * Adding Jquery scripts the right way to avoid conflicts
      */
-    try {
-        window.$ = window.jQuery = require('jquery');
+    (function($) {
+         //Jquery Partials
+        require('./partials/jquery.menu.js');
+
+        //Foundation
         require('foundation-sites/dist/js/plugins/foundation.core.js');
         require('foundation-sites/dist/js/plugins/foundation.util.mediaQuery.js');
-        //Example to include aditional plugin
-        require('foundation-sites/dist/js/plugins/foundation.util.keyboard.js');
-        require('foundation-sites/dist/js/plugins/foundation.accordion.js');
-    } catch (e) {}
+
+        //Example to include aditionals plugins
+        // require('foundation-sites/dist/js/plugins/foundation.util.keyboard.js');
+        // require('foundation-sites/dist/js/plugins/foundation.accordion.js');
+
+        //Foundation Init
+        $(document).foundation();
+    })( jQuery );
 ```
 
 ## Personalización SASS
@@ -47,7 +53,6 @@ Todos los archivos sass los podemos encontrar en `resources/assets/sass/`, de ig
 ```css
     //Foundation
     //@import "foundation/settings";
-    //@import "node_modules/foundation-sites/scss/foundation";
     //@import "foundation/modules";
 ```
 
