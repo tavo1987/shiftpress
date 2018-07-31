@@ -12,6 +12,6 @@ function shiftpress_enqueue_scripts()
      */
     wp_enqueue_script('jquery', true);
 
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/public/js/main.js', array(), '', true);
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/public/js/shiftpress.js', array(), '', true);
 }
 add_action('wp_enqueue_scripts', 'shiftpress_enqueue_scripts', 999);
