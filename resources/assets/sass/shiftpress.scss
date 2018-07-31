@@ -1,41 +1,23 @@
-
 /*
-    ===============================================
-        $STYLES
-    ===============================================
+    ========================================================
+        Sass configuration
+    ========================================================
 */
 
 //Foundation
 @import "foundation/settings";
-@import "node_modules/foundation-sites/scss/foundation";
 @import "foundation/modules";
 
-//LIB
-@import "lib/settings";
-@import "lib/animate";
-@import "lib/mixins";
-@import "lib/placeholders";
-
-//BASE STYLES
-//@import '../../../node_modules/foundation-sites/dist/css/foundation-flex';
+//Base
+@import "base/settings";
 @import "base/wordpress";
-@import "base/base";
-
-//ELEMENTS
-
-
-//ABSTRATIONS
-@import "abstractions/buttons";
-@import "abstractions/pagination";
+@import "base/site";
 
 //THEME
-@import "theme/button-top";
-@import "theme/header";
-@import "theme/banner";
-@import "theme/main-menu";
-@import "theme/search";
-@import "theme/widgets";
-@import "theme/footer";
-@import "theme/page";
-@import "theme/comments";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/page";
 
+//Components
+@import "components/pagination";
+@import "components/comments";

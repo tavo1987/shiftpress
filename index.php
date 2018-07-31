@@ -1,8 +1,8 @@
 
 <?php get_header(); ?>
 
-<div class="row">
-    <section id="content" role="main" class="small-12 medium-12 large-9 columns">
+<div class="grid-x">
+    <section id="content" role="main" class="small-12 medium-12 large-9 cell">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'partials/entry' ); ?>
             <?php comments_template(); ?>

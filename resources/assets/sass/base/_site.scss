@@ -1,0 +1,36 @@
+/*
+	=============================================
+		$GENERALS STYLES
+	=============================================
+*/
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html{
+	font-size: 100%;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: $font-family;
+	color: $font-color;
+}
+
+a{
+	text-decoration: none;
+}
+
+h1, h2,h3, h4, h5, h6 {
+	color: darken($secondary,5%);
+}
+
+p{
+	margin-bottom: 1rem;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}

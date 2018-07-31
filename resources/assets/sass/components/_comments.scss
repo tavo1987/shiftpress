@@ -10,7 +10,7 @@
     color: #000;
     border-top: 1px solid rgba(0,0,0,.3);
     padding: .75rem 0;
-    color: $base-color;
+    color: $primary;
     font-size: 1.25rem;
     margin-bottom: 0 !important;
 }
@@ -45,7 +45,7 @@
     .fn{
         font-style: normal !important;
         padding-left: 5px;
-        color: $base-color;
+        color: $primary;
     }
 }
 
@@ -56,7 +56,7 @@
 
 //respuesta
 .reply a{
-    background:$base-color;
+    background:$primary;
     color: #fff !important;
     font-size: .75rem;
     padding:.25rem .35rem;
@@ -75,7 +75,7 @@
 
 //para el comentaio o parrrafo
 .comment-body > p{
-    background:rgba($base-color,.2);
+    background:rgba($primary,.2);
     color: #666;
     padding:.3rem 1rem;
     border-radius: 5px;
@@ -142,7 +142,7 @@
     }
 
     #submit{
-        background:$base-color;
+        background: $primary;
         border: none;
         color: #fff;
         border-radius: 3px;
@@ -150,7 +150,7 @@
         transition: all .3s ease;
         &:hover{
             cursor: pointer;
-            background:darken($base-color,10);
+            background:darken($primary,10);
         }
     }
 }//END COMMENT FORM
