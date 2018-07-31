@@ -18,8 +18,8 @@ function core_theme_start()
     add_filter('gallery_style', 'shiftpress_gallery_style');
 
     // cleaning up excerpt
-    add_filter('excerpt_length', 'long_excerpt', 999);
-    add_filter('excerpt_more', 'new_excerpt');
+    //add_filter('excerpt_length', 'long_excerpt', 999);
+    //add_filter('excerpt_more', 'new_excerpt');
 
     //Prevent login error
     add_filter( 'login_errors', 'prevent_login_error' );
@@ -35,8 +35,6 @@ function core_theme_start()
 //The default wordpress head is a mess. Let's clean it up by removing all the junk we don't need.
 function shiftpress_head_cleanup()
 {
-
-
     //remove emojis
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -71,7 +69,7 @@ function shiftpress_head_cleanup()
 
 } /* end cleanup */
 
-// prevent_login_error
+// Prevent login errors details
 function prevent_login_error(){
   return __('Opps!! Tus credenciales no son correctas', 'shiftpress');
 }
@@ -83,10 +81,7 @@ function stop_loading_wp_embed() {
     }
 }
 
-
-/**
- * Remove jquery Migrate for users
- */
+// Remove jquery Migrate for users
 add_action('wp_default_scripts', function ($scripts) {
     if (! current_user_can('administrator')) {
         if (! empty($scripts->registered['jquery'])) {
@@ -96,7 +91,7 @@ add_action('wp_default_scripts', function ($scripts) {
     }
 });
 
-// remove WP version from scripts
+// Remove WP version from scripts
 function remove_wp_ver_css_js($src)
 {
     if (strpos($src, 'ver=')) {
@@ -128,13 +123,13 @@ function shiftpress_gallery_style($css)
     return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-/*----------------------------------------------------------------------*/
-/* funciones para modificar el excerp
-/*-----------------------------------------------------------------------*/
+// Custom excerpt words number
 function long_excerpt($length)
 {
-    return 15;//numero de palabras a mostrar en el excerpt
+    return 15;
 }
+
+// Custom excerpt
 function new_excerpt($more)
 {
     global $post;
