@@ -11,7 +11,7 @@
 
     <?php wp_head(); ?>
 </head>
-<body <?php body_class('bg-white'); ?>>
+<body <?php body_class('font-sans antialiased text-black leading-tight'); ?>>
     <?php if (get_option('google_tag_manager_id') != ''): ?>
         <?php get_template_part( 'partials/code', 'tag-manager-noscript' ); ?>
     <?php endif ?>
