@@ -28,7 +28,6 @@
                 </div>
             </section><!--END SECTION-->
 
-
             <div class="top-bar">
                 <nav id="menu" role="navigation" class="top-bar-left">
                 <?php wp_nav_menu([
@@ -40,9 +39,5 @@
                 <?php get_search_form(); ?>
             </div>
         </header><!--END HEADER-->
-
-        <section class="banner">
-            <img src="http://placehold.it/1920x500" alt="Banner">
-        </section>
 
         <div id="container">
