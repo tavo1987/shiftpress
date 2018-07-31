@@ -42,7 +42,6 @@ function shiftpress_setup(){
    * @var array
    */
     $defaults = array(
-        'default-image'          => get_template_directory_uri().'/public/images/logo.png',
         'random-default'         => false,
         'width'                  => 1200,
         'height'                 => 100,

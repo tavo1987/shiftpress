@@ -1,41 +1,53 @@
-
 /*
-    ===============================================
-        $STYLES
-    ===============================================
+    ========================================================
+        Sass configuration
+    ========================================================
 */
+
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ */
+@tailwind preflight;
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ */
 
 //Foundation
 @import "foundation/settings";
-@import "node_modules/foundation-sites/scss/foundation";
 @import "foundation/modules";
 
-//LIB
-@import "lib/settings";
-@import "lib/animate";
-@import "lib/mixins";
-@import "lib/placeholders";
-
-//BASE STYLES
-//@import '../../../node_modules/foundation-sites/dist/css/foundation-flex';
+//Base
+@import "base/settings";
 @import "base/wordpress";
-@import "base/base";
+@import "base/site";
 
-//ELEMENTS
+//Layout
+@import "layout/header";
+@import "layout/footer";
+@import "layout/page";
 
+//Components
+@import "components/pagination";
+@import "components/comments";
 
-//ABSTRATIONS
-@import "abstractions/buttons";
-@import "abstractions/pagination";
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
 
-//THEME
-@import "theme/button-top";
-@import "theme/header";
-@import "theme/banner";
-@import "theme/main-menu";
-@import "theme/search";
-@import "theme/widgets";
-@import "theme/footer";
-@import "theme/page";
-@import "theme/comments";
-
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */

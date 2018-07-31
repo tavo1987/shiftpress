@@ -12,18 +12,9 @@ function shiftpress_create_page(){
     require_once get_template_directory().'/core/theme-panel/form.php';
 }
 
-
 function display_theme_panel_options(){
-
     require_once get_template_directory().'/core/theme-panel/fields.php';
-
-    add_settings_section("shiftpress-settings-analitycs", __('Opciones de Analítica','shiftpress'), 'shiftpress_analytics_options', "shiftpress_theme_panel");
-
-    register_setting("shiftpress-settings-group", "universal_analytics");
-    register_setting("shiftpress-settings-group", "facebook_pixel_code");
-
-    add_settings_field('universal_analytics', __('UA Analitycs: ', 'shiftpress'), 'show_field_analitycs', 'shiftpress_theme_panel', 'shiftpress-settings-analitycs');
-    add_settings_field('facebook_pixel_code', __('Facebook ID: ', 'shiftpress'), 'show_field_facebook_pixel_code', 'shiftpress_theme_panel', 'shiftpress-settings-analitycs');
+    add_settings_section("shiftpress-settings-tag-manager", __('Tag Manager','shiftpress'), 'shiftpress_tag_manager_option', "shiftpress_theme_panel");
+    add_settings_field('google_tag_manager_id', __('Google Tag Manager ID: ', 'shiftpress'), 'show_field_google_tag_manager', 'shiftpress_theme_panel', 'shiftpress-settings-tag-manager');
+    register_setting("shiftpress-settings-group", "google_tag_manager_id");
 }
-
-
